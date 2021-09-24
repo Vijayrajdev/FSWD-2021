@@ -7,9 +7,11 @@
 body {
   background-color: #fdfcfa;
 }
+
 .container {
   height: 100vh;
   display: flex;
+  /* flex-wrap: wrap;  */
   align-items: center;
   justify-content: center;
 }
@@ -17,17 +19,18 @@ body {
 .card {
   display: flex;
   flex-direction: column;
-  height: 400px;
-  width: 350px;
+  height: 350px;
+  width: 250px;
+  position: relative;
   align-items: center;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   border-radius: 10px;
   background-color: aliceblue;
+  margin: 50px;
 }
 
 img {
-  width: 350px;
-  height: 200px;
+  width: 100%;
   margin-bottom: 15px;
   border-radius: 10px;
 }
@@ -50,21 +53,22 @@ button {
   margin: 10px 0;
   color: aliceblue;
   cursor: pointer;
+  font-weight: 700;
 }
 
 .circle {
   position: absolute;
+  right: 15px;
+  top: 15px;
   border: 1px solid crimson;
   height: 50px;
   width: 50px;
   border-radius: 50%;
   display: flex;
-  align-items: center;
+  align-items:center;
   text-align: center;
   justify-content: center;
-  right: 480px;
-  top: 120px;
-  color: aliceblue;
+  color: #f1f1f1;
   background-color: crimson;
   font-weight: 800;
 }
