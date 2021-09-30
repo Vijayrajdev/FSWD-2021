@@ -1,18 +1,12 @@
-// function greet(name = "vj", age = "19") {
-//   console.log(`I'm ${name} and I'm ${age} yr old.`);
-// }
-//
-// greet("vijay", 19);
+const button = document.querySelector("button");
+const input = document.querySelector("input");
+const list = document.querySelector("ul");
 
-const greet = (name = "vj") => {
-  console.log(`Hi ${name}!!`);
-};
+button.addEventListener("click", (e) => {
+  const inputValue = input.value;
+  const element = document.createElement("li");
+  const textNode = document.createTextNode(inputValue);
 
-greet();
-
-const add = (a = 0, b = 0) => {
-  let sum = a + b;
-  console.log(sum);
-};
-
-add(20, 30);
+  element.appendChild(textNode);
+  list.appendChild(element);
+});
