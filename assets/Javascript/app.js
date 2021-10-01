@@ -25,9 +25,11 @@ const calculate = (operation) => {
 add.addEventListener("click", () => {
   return calculate("add");
 });
+
 multiply.addEventListener("click", () => {
   return calculate("multiply");
 });
+
 subract.addEventListener("click", () => {
   return calculate("subract");
 });
