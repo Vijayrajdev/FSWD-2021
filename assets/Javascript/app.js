@@ -1,22 +1,8 @@
-// const button = document.querySelector("button");
-// const input = document.querySelector("input");
-// const list = document.querySelector("ul");
-//
-// button.addEventListener("click", (e) => {
-//   const inputValue = input.value;
-//   const element = document.createElement("li");
-//   const textNode = document.createTextNode(inputValue);
-//
-//   element.appendChild(textNode);
-//   list.appendChild(element);
-// });
+let data = fetch('https://jsonplaceholder.typicode.com/users')
+    .then(res => res.json())
+    .then(json => console.log(json))
 
-const body = document.querySelector("body");
-const button = document.querySelector("button");
+setTimeout(() => {
+    console.log(data);
+}, 2000)
 
-button.addEventListener(
-  "click",
-  (mode = (e) => {
-    body.classList.toggle("dark");
-  })
-);
