@@ -1,8 +1,10 @@
 let data = fetch('https://jsonplaceholder.typicode.com/users')
     .then(res => res.json())
-    .then(json => console.log(json))
 
-setTimeout(() => {
-    console.log(data);
+
+
+let list = setTimeout(() => {
+    data = (json) => { console.log(json) }
 }, 2000)
 
+console.log(list);
