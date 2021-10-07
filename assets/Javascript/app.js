@@ -1,10 +1,20 @@
-let data = fetch('https://jsonplaceholder.typicode.com/users')
-    .then(res => res.json())
+const tableBody = document.querySelector('tbody');
 
+const createRow = (user) => {
+  let newRow = document.createElement('tr');
+  let template = `  
+        <td>${user.id}</td>
+        <td>${user.name}</td>
+        <td>${user.username}</td>
+        <td>${user.email}</td>`
+  newRow.innerHTML = template;
+  return newRow;
+}
 
-
-let list = setTimeout(() => {
-    data = (json) => { console.log(json) }
-}, 2000)
-
-console.log(list);
+const response = fetch('https://jsonplaceholder.typicode.com/users')
+  .then(res => res.json())
+  .then(data => {
+    data.forEach(data => {
+      tableBody.appendChild(createRow(data))
+    });
+  })

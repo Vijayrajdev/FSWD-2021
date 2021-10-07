@@ -1,0 +1,15 @@
+* {
+  margin: 30px 50px;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+table,
+tbody,
+th,
+tr,
+td {
+  border: 0.5px solid #000;
+  border-collapse: collapse;
+  padding: 10px;
+}
