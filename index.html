@@ -14,12 +14,13 @@
       }
 
       body {
-        background-color: #fdfcfa;
+        background-color: #fcf1f4;
       }
 
       .container {
         height: 70vh;
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
         justify-content: center;
       }
@@ -36,9 +37,8 @@
         width: 250px;
         height: 30px;
         border-radius: 4px;
-        border: 1px solid #000;
+        border: 1px solid #df5571;
         padding: 5px;
-        outline: none;
         caret-color: crimson;
       }
 
@@ -47,7 +47,8 @@
       }
 
       .input_box:focus {
-        border: 1px solid crimson;
+        border: 1px solid #ecbdc6;
+        outline: 2px solid #ecbdc6;
       }
 
       .card {
@@ -91,6 +92,11 @@
         cursor: pointer;
         font-weight: 700;
       }
+
+      .fixed {
+        position: absolute;
+        bottom: -25px;
+      }
     </style>
   </head>
   <body>
@@ -113,23 +119,26 @@
         const url = `https://api.edamam.com/search?app_id=6f512d38&app_key=19cf2c2a87f4c383a65e181519481aa4&q=${result}`;
         const res = await fetch(url);
         const data = await res.json();
-        let image = data.hits[0].recipe.image;
-        return image;
-      };
-
-      search.addEventListener("click", async (e) => {
-        let image = await getData(input.value);
-        let data = `<div class="card">
-              <img src="${image}" alt="" />
+        let recipe = data.hits;
+        recipe.forEach((element) => {
+          const image = element.recipe.image;
+          const generateHTML = ` <img src="${image}" alt="" />
               <div class="content">
                 <h1 class="heading">${input.value}</h1>
                 <p class="description">
                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veritatis, totam!
                 </p>
               </div>
-              <button>Yummy ${input.value}</button>
-            </div>`;
-        textArea.innerHTML = data;
+              <button class='fixed'>Yummy ${input.value}</button>`;
+          const newChild = document.createElement("div");
+          newChild.setAttribute("class", "card");
+          newChild.innerHTML = generateHTML;
+          textArea.appendChild(newChild);
+        });
+      };
+
+      search.addEventListener("click", async () => {
+        await getData(input.value);
       });
     </script>
   </body>
