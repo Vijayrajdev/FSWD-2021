@@ -1,9 +1,4 @@
-const button = document.querySelector("button");
-const input = document.querySelector("input");
-const div = document.querySelector("div");
+const path = require("path");
 
-const arr = [1, 2, 3, 4, 5];
-
-localStorage.setItem("Inputvalue", JSON.stringify(arr));
-
-console.log(JSON.parse(localStorage.getItem("Inputvalue")));
+console.log(path.resolve("./index.html"));
+console.log(path.relative("/", "./temp/util.js"));
