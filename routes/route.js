@@ -1,19 +1,35 @@
+const database = require('../database/db')
 const express = require('express')
+const { v4: uuidv4 } = require('uuid');
 const route = express.Router()
 
-route.get('/product', (req, res) => {
+route.get('/all', (req, res) => {
     try {
-        res.send('Hi...')
+        res.status(200).json({
+            categories: database.categories,
+            message: `Sucessfully fetched categories`,
+            status: `SUCCESS`
+        })
     } catch (error) {
-        console.log(error);
+        res.status(404).send(error.message)
     }
 })
 
-route.get('/category', (req, res) => {
+route.post('/add', (req, res) => {
     try {
-        res.send('bye...')
+        const { name } = req.body
+        let newCategory = {
+            name,
+            id: uuidv4()
+        }
+        database.categories.push(newCategory)
+        res.json({
+            categories: database.categories,
+            message: `Sucessfully fetched categories`,
+            status: `SUCCESS`
+        })
     } catch (error) {
-        console.log(error);
+        res.status(404).send(error.message)
     }
 })
 

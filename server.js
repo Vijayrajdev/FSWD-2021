@@ -8,7 +8,7 @@ app.use(express.json())
 
 
 // Routes
-app.use(route)
+app.use('/categories',route)
 
 
 // listening port
