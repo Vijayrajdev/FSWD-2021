@@ -21,9 +21,25 @@ router.get("/all", (req, res) => {
 });
 
 // POST route
-router.post("/post", (req, res) => {
-  const { Name, Price, Categotry } = req.body;
+router.post("/add", (req, res) => {
+  const { Id, name, price, categoryName } = req.body;
 
+  // Create category if dosen't exists
+  if (
+    !database.categories.find((item) => {
+      item.name === categoryName;
+    })
+  ) {
+    let newCategory = { name: categoryName, Id: uuidv4() };
+    database.categories.push(newCategory);
+
+    // Create a product and add it
+    const newProduct = { Id: uuidv4(), name, price, category: categoryName };
+    database.products.push(newProduct);
+  } else {
+    const newProduct = { Id: uuidv4(), name, price, category: categoryName };
+    database.products.push(newProduct);
+  }
   try {
     res.json({
       products: database.products,
@@ -39,4 +55,7 @@ router.post("/post", (req, res) => {
   }
 });
 
+// DELETE route
+
+// PUT delete
 module.exports = router;

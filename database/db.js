@@ -1,5 +1,5 @@
 let products = [];
 let categories = [];
-let order = [];
+let orders = [];
 
-module.exports = { products, categories, order };
+module.exports = { products, categories, orders };
